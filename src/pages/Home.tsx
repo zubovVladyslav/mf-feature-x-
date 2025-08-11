@@ -1,5 +1,6 @@
 import React from 'react';
 import type { AppProps, ThemeMode } from '../types';
+import { getTheme, styles } from '../theme';
 
 const readHostTheme = (): ThemeMode | undefined => {
   if (typeof document === 'undefined') return undefined;
@@ -14,17 +15,19 @@ export const Home: React.FC<Pick<AppProps, 'hostState' | 'onHostIncrement' | 'on
   theme,
 }) => {
   const effectiveTheme = theme ?? readHostTheme();
+  const t = getTheme(effectiveTheme);
   return (
-    <div>
-      <div style={{ marginBottom: 8 }}>Theme: {effectiveTheme ?? '-'}</div>
-      <div>Host count: {hostState?.count ?? '-'}</div>
+    <div style={styles.card(t)}>
+      <div style={{ marginBottom: 8, color: t.textMuted }}>Theme: {effectiveTheme ?? '-'}</div>
+      <div style={{ marginBottom: 4 }}>Host count: {hostState?.count ?? '-'}</div>
       <div>Host text: {hostState?.text ?? '-'}</div>
-      <button style={{ marginTop: 8 }} onClick={onHostIncrement}>Increment in host</button>
-      <div style={{ marginTop: 8 }}>
+      <button style={{ marginTop: 12, ...styles.button(t) }} onClick={onHostIncrement}>Increment in host</button>
+      <div style={{ marginTop: 12 }}>
         <input
           placeholder="Type to update host text"
           defaultValue={hostState?.text}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => onHostTextChange?.(e.target.value)}
+          style={styles.input(t)}
         />
       </div>
     </div>
