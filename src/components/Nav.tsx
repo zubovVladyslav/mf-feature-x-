@@ -13,6 +13,8 @@ export const Nav: React.FC<{ theme?: ThemeMode }> = ({ theme }) => {
       <span style={{ color: t.textMuted }}>|</span>
       <Link to="details" style={styles.link(t, pathname.endsWith('/details'))}>Details</Link>
       <span style={{ color: t.textMuted }}>|</span>
+      <Link to="storage" style={styles.link(t, pathname.endsWith('/storage'))}>Storage</Link>
+      <span style={{ color: t.textMuted }}>|</span>
       <button type="button" onClick={() => navigate('/exchange')} style={styles.button(t)}>
         Go to /exchange
       </button>

@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Nav } from './components/Nav';
 import { Home } from './pages/Home';
 import { Details } from './pages/Details';
+import { StoragePage } from './pages/Storage';
 import type { AppProps, ThemeMode } from './types';
 import { getTheme, styles } from './theme';
 
@@ -23,6 +24,7 @@ const App: React.FC<AppProps> = ({ theme, hostState, onHostIncrement, onHostText
       <Routes>
         <Route path="/" element={<Home theme={effectiveTheme} hostState={hostState} onHostIncrement={onHostIncrement} onHostTextChange={onHostTextChange} />} />
         <Route path="details" element={<Details theme={effectiveTheme} hostState={hostState} />} />
+        <Route path="storage" element={<StoragePage theme={effectiveTheme} />} />
       </Routes>
     </div>
   );
