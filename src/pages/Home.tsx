@@ -20,8 +20,12 @@ export const Home: React.FC<Pick<AppProps, 'hostState' | 'onHostIncrement' | 'on
     <div style={styles.card(t)}>
       <div style={{ marginBottom: 8, color: t.textMuted }}>Theme: {effectiveTheme ?? '-'}</div>
       <div style={{ marginBottom: 4 }}>Host count: {hostState?.count ?? '-'}</div>
-      <div>Host text: {hostState?.text ?? '-'}</div>
-      <button style={{ marginTop: 12, ...styles.button(t) }} onClick={onHostIncrement}>Increment in host</button>
+      <div style={{ color: 'var(--negative-color-primary)' }}>Host text: {hostState?.text ?? '-'} (red color styles form host)</div>
+      <button
+        style={{ marginTop: 12, ...styles.button(t), backgroundColor: 'var(--button-primary-background-color)', color: 'var(--button-primary-color' }}
+        onClick={onHostIncrement}>
+        Increment in host (color styles form host)
+      </button>
       <div style={{ marginTop: 12 }}>
         <input
           placeholder="Type to update host text"

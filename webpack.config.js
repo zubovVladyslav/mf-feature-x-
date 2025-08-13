@@ -43,11 +43,11 @@ module.exports = (_env, argv) => {
         'process.env.NODE_ENV': JSON.stringify(isDev ? 'development' : 'production')
       }),
       new ModuleFederationPlugin({
-        // ВАЖНО: имя должно совпадать со scope в хосте (mfScope)
+        // IMPORTANT: name must match mfScope in host
         name: 'featureX',
         filename: 'remoteEntry.js',
         exposes: {
-          './App': './src/App' // ВАЖНО: путь должен совпасть с mfModule=./App
+          './App': './src/App' //IMPORTANT: path must match mfModule=./App
         },
         shared: {
           react: { singleton: true, requiredVersion: '^18.3.1', strictVersion: true },
